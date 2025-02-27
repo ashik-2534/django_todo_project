@@ -1,10 +1,11 @@
 from django import forms
+from .models import Task
 
-class TaskForm(forms.Form):
-    title = forms.CharField(max_length=200, required=True, widget=forms.TextInput(attrs={
-        'class': 'form-control'
-    }))
-    description = forms.CharField(required=False, widget=forms.Textarea(attrs={
-        'class': 'from-control', 'rows': 3
-    }))
-    completed = forms.BooleanField(required=False)
+class TaskForm(forms.ModelForm):
+    class Meta:
+        model = Task
+        fields = ['title', 'description', 'completed']
+        widgets = {
+            'title' :forms.TextInput(attrs={'class': 'form-control'}),
+            'description': forms.Textarea(attrs={'class': 'from-control', 'rows': 3}),
+        }
