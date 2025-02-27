@@ -1,6 +1,11 @@
-<h1>Create your tasks</h1>
+{% extendes 'base.html' %}
+{% block title %}Create Task{%endblock%}
+{% block content %}
+<h1>Create a tasks</h1>
 <form method="POST">
     {%csrf_token%}
     {{form.as_p}}
     <button type="submit">Submit</button>
 </form>
+<a href="{% url 'index' %}">Back to task list</a>
+{%endblock%}
