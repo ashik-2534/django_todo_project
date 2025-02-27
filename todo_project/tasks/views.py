@@ -13,7 +13,6 @@ def create_task(request):
     if request.method == 'POST':
         form = TaskForm(request.POST)
         if form.is_valid():
-            form.save()
             print(form.cleaned_data)
     else:
         form = TaskForm()
